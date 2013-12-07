@@ -59,7 +59,7 @@ public class MainActivity extends ActionBarActivity {
                 textView_PU.setText("");
                 sendData(data);
             } else {
-                textView_PU.setText(cityName + "Not Found!");
+                textView_PU.setText(cityName + " Not Found!");
                 textView_PU.setTextColor(Color.RED);
             }
             return;
@@ -78,6 +78,7 @@ public class MainActivity extends ActionBarActivity {
             intent.putExtra("TempF", data.getTempF());
             intent.putExtra("Weather",data.getWeather());
             intent.putExtra("CityName",data.getCityName());
+            intent.putExtra("ImageURL",data.getImageURL());
         }
         startActivity(intent);
         return;
@@ -142,7 +143,7 @@ public class MainActivity extends ActionBarActivity {
         } else {
             // Create the text view
             TextView textView = new TextView(this);
-            textView.setTextSize(40);
+            textView.setTextSize(10);
             textView.setText("Network not Found");
             textView.setTextColor(Color.RED);
             // Set the text view as the activity layout

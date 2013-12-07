@@ -38,8 +38,10 @@
         android:layout_height="wrap_content"
         android:text="New Text"
         android:id="@+id/textView_Weather"
+        android:layout_alignLeft="@+id/imageView_img"
         android:layout_below="@+id/imageView_img"
-        android:layout_alignLeft="@+id/imageView_img" />
+        android:layout_alignRight="@+id/imageView_img"
+        android:textSize="15dp" />
 
 
 </RelativeLayout>

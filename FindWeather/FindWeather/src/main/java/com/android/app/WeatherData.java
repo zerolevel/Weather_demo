@@ -13,6 +13,7 @@ public class WeatherData {
     private Double temp_c;
     private Double temp_f;
     private String cityNameFull;
+    private String ImageURL;
 
     //access and set Status
     public void setStatus(Boolean value) { this.status = value; }
@@ -45,5 +46,9 @@ public class WeatherData {
     //access and set cityName.
     public void setCityName(String cityName) { this.cityNameFull = cityName; }
     public String getCityName() { return this.cityNameFull; }
+
+    //access and set ImageURL
+    public void setImageURL(String imageURL) { this.ImageURL = imageURL; }
+    public String getImageURL() { return this.ImageURL; }
 
 }

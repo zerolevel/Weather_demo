@@ -94,6 +94,7 @@ public class JSONParser {
             data.setWeather(currentObservation.getString("weather"));
             data.setTempC(currentObservation.getDouble("temp_c"));
             data.setTempF(currentObservation.getDouble("temp_f"));
+            data.setImageURL(currentObservation.getString("icon_url"));
             data.setCityName(currentObservation.getJSONObject("display_location").getString("full"));
         } catch (JSONException e) {
             Log.e("JSON Error", "Error getting String weather" + e.toString());
