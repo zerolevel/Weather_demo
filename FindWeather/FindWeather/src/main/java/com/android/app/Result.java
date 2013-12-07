@@ -27,14 +27,27 @@ public class Result extends ActionBarActivity {
         }*/
 
         Intent intent = getIntent();
-
+        final String DEGREE  = "\u00b0";
 
         Double tempC = intent.getDoubleExtra("TempC", 0);
+        Double tempF = intent.getDoubleExtra("TempF", 0);
 
         View header = (View)getLayoutInflater().inflate(R.layout.fragment_result, null);
-        TextView textView_tempC = (TextView) header.findViewById(R.id.editText_tempC);
-        textView_tempC.setText(tempC.toString());
+
+        // Places Temperature in result.
+        TextView textView_temp = (TextView) header.findViewById(R.id.textView_temp);
+        textView_temp.setText(tempC.toString() + " " + DEGREE + "C" + " / " + tempF.toString() + " " + DEGREE + "F");
+
+        // Places city name in result.
+        TextView textView_cityName = (TextView) header.findViewById(R.id.textView_cityName);
+        textView_cityName.setText(intent.getStringExtra("CityName"));
+
+        // Places Weather Details in result.
+        TextView textView_weather = (TextView) header.findViewById(R.id.textView_Weather);
+        textView_weather.setText(intent.getStringExtra("weather"));
+
         setContentView(header);
+
     }
 
 

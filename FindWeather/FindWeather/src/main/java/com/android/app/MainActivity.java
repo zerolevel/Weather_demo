@@ -73,6 +73,7 @@ public class MainActivity extends ActionBarActivity {
             intent.putExtra("TempC", data.getTempC());
             intent.putExtra("TempF", data.getTempF());
             intent.putExtra("Weather",data.getWeather());
+            intent.putExtra("CityName",data.getCityName());
         }
         //intent.putExtra("This", "Weather");
         startActivity(intent);

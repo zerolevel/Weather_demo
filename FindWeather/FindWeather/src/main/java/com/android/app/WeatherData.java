@@ -11,6 +11,7 @@ public class WeatherData {
     private String weather;
     private Double temp_c;
     private Double temp_f;
+    private String cityNameFull;
 
     public void setStatus(Boolean value) { this.status = value; }
     public Boolean getStatus() { return this.status; }
@@ -35,4 +36,8 @@ public class WeatherData {
     public Double getTempF() {
         return this.temp_f;
     }
+
+    public void setCityName(String cityName) { this.cityNameFull = cityName; }
+    public String getCityName() { return this.cityNameFull; }
+
 }
