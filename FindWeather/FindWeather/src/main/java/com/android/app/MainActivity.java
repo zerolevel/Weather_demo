@@ -29,17 +29,16 @@ public class MainActivity extends ActionBarActivity {
 
     public String cityName = null;
 
-
-
-    // This class runs AsyncTask in background.
-    // It executes HTTP Connection and parses JSON data received from the wunderGround A
-    //
+    /**
+     * This class runs AsyncTask in background.
+     * It executes HTTP Connection and parses JSON data received from the wunderGround API in background
+     */
     private class AsyncTaskHttpConnExec extends AsyncTask<String,Integer,WeatherData> {
         TextView textView_PU = (TextView) findViewById(R.id.textView_ProcessUpdates);
         @Override
         protected  void onPreExecute()
         {
-            textView_PU.setText("Fetching Data...");
+            textView_PU.setText("Loading Information...");
             textView_PU.setTextColor(Color.YELLOW);
         }
 
@@ -67,6 +66,11 @@ public class MainActivity extends ActionBarActivity {
         }
 
     }
+
+    /**
+     * This function receives the data from the AsyncTask runner and calls Result Activity
+     */
+
     public void sendData(WeatherData data){
         Intent intent = new Intent(getApplicationContext(), Result.class  );
         if(data.getStatus()) {
@@ -75,7 +79,6 @@ public class MainActivity extends ActionBarActivity {
             intent.putExtra("Weather",data.getWeather());
             intent.putExtra("CityName",data.getCityName());
         }
-        //intent.putExtra("This", "Weather");
         startActivity(intent);
         return;
     }
@@ -130,7 +133,7 @@ public class MainActivity extends ActionBarActivity {
     }
 
     public void findWeather(View view) {
-        // Creating JSON Parser instance
+        //Works only when the network is available.
         if (isNetworkAvailable()) {
             EditText editText = (EditText) findViewById(R.id.editText_cityName);
             cityName = editText.getText().toString();
@@ -148,7 +151,7 @@ public class MainActivity extends ActionBarActivity {
         return;
 
     }
-
+    //This function checks weather the network is available.
     private boolean isNetworkAvailable() {
         ConnectivityManager connectivityManager
                 = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);

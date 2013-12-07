@@ -18,8 +18,13 @@ import org.json.JSONObject;
 
 import android.util.Log;
 
+/**
+ * This class is used to parse JSON data from the Web API.
+ * This makes HTTP connection receives JSON data and sends to the callee.
+ */
 public class JSONParser {
 
+    //Initialize static variables
     static InputStream is = null;
     static JSONObject jObj = null;
     static String json = "";
@@ -84,6 +89,8 @@ public class JSONParser {
         }
 
         try {
+            //Get the following details.
+            //To add more details please refer to the WunderGround Web API doc.
             data.setWeather(currentObservation.getString("weather"));
             data.setTempC(currentObservation.getDouble("temp_c"));
             data.setTempF(currentObservation.getDouble("temp_f"));

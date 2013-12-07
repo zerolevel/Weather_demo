@@ -4,7 +4,8 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 /**
- * Created by mohit on 12/7/13.
+ * This class has all the WeatherData information.
+ * All the variables have been declared private, thus to set, or access them we need separate functions.
  */
 public class WeatherData {
     private Boolean status;
@@ -13,9 +14,11 @@ public class WeatherData {
     private Double temp_f;
     private String cityNameFull;
 
+    //access and set Status
     public void setStatus(Boolean value) { this.status = value; }
     public Boolean getStatus() { return this.status; }
 
+    //access and set Weather
     public void setWeather(String weather) {
         this.weather = weather;
     }
@@ -23,6 +26,7 @@ public class WeatherData {
         return this.weather;
     }
 
+    //access and set TempC
     public void setTempC(Double temp_c) {
         this.temp_c = temp_c;
     }
@@ -30,6 +34,7 @@ public class WeatherData {
         return this.temp_c;
     }
 
+    //access and set TempF
     public void setTempF(Double temp_f) {
         this.temp_f = temp_f;
     }
@@ -37,6 +42,7 @@ public class WeatherData {
         return this.temp_f;
     }
 
+    //access and set cityName.
     public void setCityName(String cityName) { this.cityNameFull = cityName; }
     public String getCityName() { return this.cityNameFull; }
 
