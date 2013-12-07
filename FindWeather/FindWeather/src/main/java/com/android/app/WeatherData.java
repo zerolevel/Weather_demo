@@ -1,20 +1,19 @@
 package com.android.app;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 /**
  * Created by mohit on 12/7/13.
  */
 public class WeatherData {
-    private Double temp_f;
-    private Double temp_c;
+    private Boolean status;
     private String weather;
-    boolean status;
+    private Double temp_c;
+    private Double temp_f;
 
-    public void setStatus(boolean value) {
-        this.status = value;
-    }
-    public boolean getStatus() {
-        return this.status;
-    }
+    public void setStatus(Boolean value) { this.status = value; }
+    public Boolean getStatus() { return this.status; }
 
     public void setWeather(String weather) {
         this.weather = weather;

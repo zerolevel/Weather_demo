@@ -10,7 +10,12 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
+        <activity android:label="@string/title_activity_result" android:name="com.android.app.Result" android:parentActivityName="com.android.app.MainActivity">
+            <meta-data android:name="android.support.PARENT_ACTIVITY" android:value="com.android.app.MainActivity"/>
+        </activity>
     </application>
+
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
     <uses-permission android:name="android.permission.INTERNET"/>
+
 </manifest>

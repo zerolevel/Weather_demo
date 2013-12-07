@@ -4,5 +4,4 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity"
-    tools:ignore="MergeRootFrame" />
-<!-- From: file:/home/mohit/AndroidStudioProjects/FindWeather/FindWeather/src/main/res/layout/activity_main.xml -->
+    tools:ignore="MergeRootFrame" /><!-- From: file:/home/mohit/AndroidStudioProjects/FindWeather/FindWeather/src/main/res/layout/activity_main.xml -->

@@ -3,5 +3,6 @@
     android:id="@+id/container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity"
+    tools:context=".Result"
     tools:ignore="MergeRootFrame" />
+<!-- From: file:/home/mohit/AndroidStudioProjects/FindWeather/FindWeather/src/main/res/layout/activity_result.xml -->

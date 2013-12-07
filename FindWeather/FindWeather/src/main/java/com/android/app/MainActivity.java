@@ -6,6 +6,7 @@ import android.graphics.Color;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.AsyncTask;
+import android.os.Parcelable;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBar;
 import android.support.v4.app.Fragment;
@@ -35,6 +36,7 @@ public class MainActivity extends ActionBarActivity {
             textView.setText("Fetching Data...");
             textView.setTextColor(Color.RED);
         }
+
         @Override
         protected WeatherData doInBackground(String... url) {
             // Creating JSON Parser instance
@@ -45,11 +47,25 @@ public class MainActivity extends ActionBarActivity {
             String weather = data.getWeather();
             return data;
         }
+
         @Override
         protected void onPostExecute(WeatherData data) {
             textView.setText("");
+            sendData(data);
+            return;
         }
 
+    }
+    public void sendData(WeatherData data){
+        Intent intent = new Intent(getApplicationContext(), Result.class  );
+        if(data.getStatus()) {
+            intent.putExtra("TempC", data.getTempC());
+            intent.putExtra("TempF", data.getTempF());
+            intent.putExtra("Weather",data.getWeather());
+        }
+        //intent.putExtra("This", "Weather");
+        startActivity(intent);
+        return;
     }
 
     @Override
@@ -67,7 +83,7 @@ public class MainActivity extends ActionBarActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        
+
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.main, menu);
         return true;
@@ -95,7 +111,7 @@ public class MainActivity extends ActionBarActivity {
 
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                Bundle savedInstanceState) {
+                                 Bundle savedInstanceState) {
             View rootView = inflater.inflate(R.layout.fragment_main, container, false);
             return rootView;
         }
