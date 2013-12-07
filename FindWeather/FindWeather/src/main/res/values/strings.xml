@@ -4,6 +4,6 @@
     <string name="app_name">Weather_demo</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
-    <string name="buttonName_activity_main">Get Weather</string>
+    <string name="buttonName_activity_main">Go!</string>
     <string name="hint_main_activity">New York</string>
 </resources>

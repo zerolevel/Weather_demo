@@ -11,23 +11,34 @@
     <EditText
         android:layout_width="254dp"
         android:layout_height="wrap_content"
-        android:id="@+id/editText"
+        android:id="@+id/editText_cityName"
         android:layout_gravity="center_vertical"
         android:autoText="true"
         android:hint="@string/hint_main_activity"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="179dp"
-        android:textAlignment="center"/>
+        android:textAlignment="center" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/buttonName_activity_main"
-        android:id="@+id/button"
+        android:id="@+id/button_Go"
         android:layout_gravity="center_vertical"
         android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:onClick="findWeather"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:id="@+id/textView_ProcessUpdates"
+        android:layout_marginTop="40dp"
+        android:layout_below="@+id/button_Go"
+        android:layout_alignRight="@+id/button_Go" />
+
 
 </RelativeLayout>
 <!-- From: file:/home/mohit/AndroidStudioProjects/FindWeather/FindWeather/src/main/res/layout/fragment_main.xml -->

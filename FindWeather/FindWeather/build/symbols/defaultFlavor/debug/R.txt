@@ -238,11 +238,11 @@ int id action_context_bar 0x7f07001d
 int id action_menu_divider 0x7f070015
 int id action_menu_presenter 0x7f070016
 int id action_mode_close_button 0x7f070024
-int id action_settings 0x7f07003f
+int id action_settings 0x7f070040
 int id activity_chooser_view_content 0x7f070025
 int id always 0x7f07000f
 int id beginning 0x7f07000a
-int id button 0x7f07003e
+int id button_Go 0x7f07003e
 int id checkbox 0x7f07002d
 int id collapseActionView 0x7f070011
 int id container 0x7f07003c
@@ -250,7 +250,7 @@ int id default_activity_button 0x7f070028
 int id dialog 0x7f070012
 int id disableHome 0x7f070008
 int id dropdown 0x7f070013
-int id editText 0x7f07003d
+int id editText_cityName 0x7f07003d
 int id edit_query 0x7f070030
 int id end 0x7f07000c
 int id expand_activities_button 0x7f070026
@@ -286,6 +286,7 @@ int id showTitle 0x7f070006
 int id split_action_bar 0x7f07001e
 int id submit_area 0x7f070039
 int id tabMode 0x7f070002
+int id textView_ProcessUpdates 0x7f07003f
 int id title 0x7f07002b
 int id top_action_bar 0x7f070020
 int id up 0x7f070021
