@@ -17,6 +17,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.os.Build;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import org.apache.http.HttpEntity;
@@ -26,15 +27,20 @@ import java.net.URI;
 
 public class MainActivity extends ActionBarActivity {
 
+    public String cityName = null;
 
+
+
+    // This class runs AsyncTask in background.
+    // It executes HTTP Connection and parses JSON data received from the wunderGround A
+    //
     private class AsyncTaskHttpConnExec extends AsyncTask<String,Integer,WeatherData> {
-
-        TextView textView = (TextView) findViewById(R.id.textView_ProcessUpdates);
+        TextView textView_PU = (TextView) findViewById(R.id.textView_ProcessUpdates);
         @Override
         protected  void onPreExecute()
         {
-            textView.setText("Fetching Data...");
-            textView.setTextColor(Color.RED);
+            textView_PU.setText("Fetching Data...");
+            textView_PU.setTextColor(Color.YELLOW);
         }
 
         @Override
@@ -50,8 +56,13 @@ public class MainActivity extends ActionBarActivity {
 
         @Override
         protected void onPostExecute(WeatherData data) {
-            textView.setText("");
-            sendData(data);
+            if(data.getStatus()) {
+                textView_PU.setText("");
+                sendData(data);
+            } else {
+                textView_PU.setText(cityName + "Not Found!");
+                textView_PU.setTextColor(Color.RED);
+            }
             return;
         }
 
@@ -120,8 +131,18 @@ public class MainActivity extends ActionBarActivity {
     public void findWeather(View view) {
         // Creating JSON Parser instance
         if (isNetworkAvailable()) {
+            EditText editText = (EditText) findViewById(R.id.editText_cityName);
+            cityName = editText.getText().toString();
             AsyncTaskHttpConnExec runner = new AsyncTaskHttpConnExec();
-            runner.execute("http://api.wunderground.com/api/d608ad713879b294/conditions/q/Jaipur.json");
+            runner.execute("http://api.wunderground.com/api/d608ad713879b294/conditions/q/"+cityName+".json");
+        } else {
+            // Create the text view
+            TextView textView = new TextView(this);
+            textView.setTextSize(40);
+            textView.setText("Network not Found");
+            textView.setTextColor(Color.RED);
+            // Set the text view as the activity layout
+            setContentView(textView);
         }
         return;
 
