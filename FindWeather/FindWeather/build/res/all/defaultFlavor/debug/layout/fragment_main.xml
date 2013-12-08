@@ -40,4 +40,5 @@
         android:layout_alignRight="@+id/button_Go" />
 
 
-</RelativeLayout><!-- From: file:/home/mohit/AndroidStudioProjects/FindWeather/FindWeather/src/main/res/layout/fragment_main.xml -->
+</RelativeLayout>
+<!-- From: file:/home/mohit/AndroidStudioProjects/FindWeather/FindWeather/src/main/res/layout/fragment_main.xml -->

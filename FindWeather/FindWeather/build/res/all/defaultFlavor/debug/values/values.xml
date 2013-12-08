@@ -519,7 +519,7 @@
     <string name="app_name">Weather_demo</string>
     <string name="buttonName_activity_main">Go!</string>
     <string name="hello_world">Hello world!</string>
-    <string name="hint_main_activity">New York</string>
+    <string name="hint_main_activity">Jaipur</string>
     <string name="title_activity_result">Result</string>
     <!-- From: file:/home/mohit/AndroidStudioProjects/FindWeather/FindWeather/src/main/res/values/styles.xml -->
     <eat-comment />

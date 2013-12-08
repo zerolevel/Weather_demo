@@ -139,7 +139,12 @@ public class MainActivity extends ActionBarActivity {
             EditText editText = (EditText) findViewById(R.id.editText_cityName);
             cityName = editText.getText().toString();
             AsyncTaskHttpConnExec runner = new AsyncTaskHttpConnExec();
-            runner.execute("http://api.wunderground.com/api/d608ad713879b294/conditions/q/"+cityName+".json");
+            if  (cityName.contains(" ")) {
+                String newCityName = cityName.replace(" ", "%20");
+                runner.execute("http://api.wunderground.com/api/d608ad713879b294/conditions/q/"+newCityName+".json");
+            } else {
+                runner.execute("http://api.wunderground.com/api/d608ad713879b294/conditions/q/"+cityName+".json");
+            }
         } else {
             // Create the text view
             TextView textView = new TextView(this);
