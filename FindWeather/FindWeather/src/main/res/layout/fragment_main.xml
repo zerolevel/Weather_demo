@@ -20,6 +20,7 @@
         android:layout_marginTop="179dp"
         android:textAlignment="center" />
 
+
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -32,21 +33,20 @@
         android:layout_below="@+id/editText_cityName" />
 
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="100dp"
+        android:layout_height="30dp"
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:id="@+id/textView_ProcessUpdates"
-        android:layout_marginTop="40dp"
+        android:gravity="center"
         android:layout_below="@+id/button_Go"
-        android:layout_alignRight="@+id/button_Go"
-        android:layout_margi=""/>
-
-    <AutoCompleteTextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/autoCompleteTextView"
-        android:layout_below="@+id/editText_cityName"
-        android:layout_centerHorizontal="true" />
-
+        android:layout_alignLeft="@+id/editText_cityName"
+        android:layout_alignStart="@+id/editText_cityName"
+        android:layout_marginTop="70dp"
+        android:layout_alignRight="@+id/editText_cityName"
+        android:layout_alignEnd="@+id/editText_cityName"
+        android:paddingLeft="5dp"
+        android:paddingBottom="2dp"
+        android:paddingTop="2dp"
+        />
 
 </RelativeLayout>

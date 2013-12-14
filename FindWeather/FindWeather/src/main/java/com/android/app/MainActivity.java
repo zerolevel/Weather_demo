@@ -3,6 +3,7 @@ package com.android.app;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.AsyncTask;
@@ -38,8 +39,9 @@ public class MainActivity extends ActionBarActivity {
         @Override
         protected  void onPreExecute()
         {
+            textView_PU.setBackgroundResource(R.drawable.rounded);
             textView_PU.setText("Loading Information...");
-            textView_PU.setTextColor(Color.YELLOW);
+            textView_PU.setTextColor(Color.WHITE);
         }
 
         @Override
@@ -49,18 +51,19 @@ public class MainActivity extends ActionBarActivity {
 
             // getting JSON string from URL
             WeatherData data = jParser.getDataFromUrl(url[0]);
-            String weather = data.getWeather();
             return data;
         }
 
         @Override
         protected void onPostExecute(WeatherData data) {
             if(data.getStatus()) {
+                textView_PU.setBackgroundColor(Color.TRANSPARENT);
                 textView_PU.setText("");
                 sendData(data);
             } else {
-                textView_PU.setText(cityName + " Not Found!");
-                textView_PU.setTextColor(Color.RED);
+                textView_PU.setBackgroundResource(R.drawable.rounded);
+                textView_PU.setText(cityName + " not Found!");
+                textView_PU.setTextColor(Color.WHITE);
             }
             return;
         }
@@ -150,7 +153,8 @@ public class MainActivity extends ActionBarActivity {
             TextView textView = new TextView(this);
             textView.setTextSize(10);
             textView.setText("Network not Found");
-            textView.setTextColor(Color.RED);
+            textView.setBackgroundColor(Color.GRAY);
+            textView.setTextColor(Color.WHITE);
             // Set the text view as the activity layout
             setContentView(textView);
         }
