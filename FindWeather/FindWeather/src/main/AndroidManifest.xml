@@ -30,7 +30,16 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.android.app.MainActivity" />
         </activity>
+        <activity
+            android:name="com.android.app.Option"
+            android:label="@string/title_activity_option"
+            android:parentActivityName="com.android.app.MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.android.app.MainActivity" />
+        </activity>
     </application>
+
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
 

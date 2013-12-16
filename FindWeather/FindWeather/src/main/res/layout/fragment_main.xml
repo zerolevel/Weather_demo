@@ -18,7 +18,11 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="179dp"
-        android:textAlignment="center" />
+        android:textAlignment="center"
+        android:imeActionLabel="Go!"
+        android:imeOptions="actionDone"
+        android:imeActionId="@+id/button_Go"
+        android:inputType="text" />
 
 
     <Button
@@ -47,6 +51,7 @@
         android:paddingLeft="5dp"
         android:paddingBottom="2dp"
         android:paddingTop="2dp"
+
         />
 
 </RelativeLayout>

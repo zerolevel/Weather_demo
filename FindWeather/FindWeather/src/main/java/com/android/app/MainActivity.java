@@ -28,13 +28,15 @@ import java.net.URI;
 
 public class MainActivity extends ActionBarActivity {
 
-    public String cityName = null;
+    String cityName = null;
 
     /**
      * This class runs AsyncTask in background.
      * It executes HTTP Connection and parses JSON data received from the wunderGround API in background
      */
-    private class AsyncTaskHttpConnExec extends AsyncTask<String,Integer,WeatherData> {
+    private class AsyncTaskHttpConnExec extends AsyncTask<String,Integer,JSONParser> {
+
+        //This textView handles additional Information on the main activity
         TextView textView_PU = (TextView) findViewById(R.id.textView_ProcessUpdates);
         @Override
         protected  void onPreExecute()
@@ -45,44 +47,49 @@ public class MainActivity extends ActionBarActivity {
         }
 
         @Override
-        protected WeatherData doInBackground(String... url) {
+        protected JSONParser doInBackground(String... url) {
             // Creating JSON Parser instance
-            JSONParser jParser = new JSONParser();
+            HttpConn httpConn = new HttpConn(url[0]);
+            JSONParser jsonParser = new JSONParser(httpConn.getJsonObject());
+            return jsonParser;
 
-            // getting JSON string from URL
-            WeatherData data = jParser.getDataFromUrl(url[0]);
-            return data;
         }
 
         @Override
-        protected void onPostExecute(WeatherData data) {
-            if(data.getStatus()) {
+        protected void onPostExecute(JSONParser jsonParser) {
+            if(jsonParser.getStatus()==0){
+                textView_PU.setText("Invalid Data...!!!");
+                textView_PU.setTextColor(Color.WHITE);
+            } else {
+                if(jsonParser.getStatus()==1) {
+                    sendData2ResultActivity(jsonParser.getJSONObj().toString());
+                } else if(jsonParser.getStatus()==2) {
+                    sendData2OptionActivity(jsonParser.getJSONObj().toString());
+                }
                 textView_PU.setBackgroundColor(Color.TRANSPARENT);
                 textView_PU.setText("");
-                sendData(data);
-            } else {
-                textView_PU.setBackgroundResource(R.drawable.rounded);
-                textView_PU.setText(cityName + " not Found!");
-                textView_PU.setTextColor(Color.WHITE);
             }
-            return;
         }
-
     }
 
     /**
-     * This function receives the data from the AsyncTask runner and calls Result Activity
+     * This function receives the data from the AsyncTask runner and sends this to Result Activity
      */
 
-    public void sendData(WeatherData data){
+    public void sendData2ResultActivity(String jsonString) {
         Intent intent = new Intent(getApplicationContext(), Result.class  );
-        if(data.getStatus()) {
-            intent.putExtra("TempC", data.getTempC());
-            intent.putExtra("TempF", data.getTempF());
-            intent.putExtra("Weather",data.getWeather());
-            intent.putExtra("CityName",data.getCityName());
-            intent.putExtra("ImageURL",data.getImageURL());
-        }
+        intent.putExtra("jsonString", jsonString);
+        startActivity(intent);
+        return;
+    }
+
+    /**
+     * This function receives data from the AsyncTask runner and sends this to option activity
+     */
+
+    public void sendData2OptionActivity(String jsonString) {
+        Intent intent = new Intent(getApplicationContext(), Option.class  );
+        intent.putExtra("jsonString", jsonString);
         startActivity(intent);
         return;
     }

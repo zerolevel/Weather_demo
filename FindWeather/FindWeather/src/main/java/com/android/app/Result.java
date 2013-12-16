@@ -20,6 +20,9 @@ import android.os.Build;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.MalformedURLException;
@@ -30,7 +33,7 @@ public class Result extends ActionBarActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_result);
+        setContentView(R.layout.fragment_result);
 
         /*if (savedInstanceState == null) {
             getSupportFragmentManager().beginTransaction()
@@ -39,30 +42,43 @@ public class Result extends ActionBarActivity {
         }*/
 
         Intent intent = getIntent();
-        final String DEGREE  = "\u00b0";
 
-        Double tempC = intent.getDoubleExtra("TempC", 0);
-        Double tempF = intent.getDoubleExtra("TempF", 0);
+        String jString = intent.getStringExtra("jsonString");
+
+        JSONObject jsonObject;
+        try {
+            jsonObject = new JSONObject(jString);
+        } catch (JSONException e) {
+            Log.e("JSON Error", "Error getting Json Object" + e.toString());
+            return;
+        }
+
+        final String DEGREE  = "\u00b0";
+        JSONParser jsonParser = new JSONParser(jsonObject);
+        WeatherData data = jsonParser.getWeatherData();
+
+        Double tempC = data.getTempC();
+        Double tempF = data.getTempF();
 
         View header = (View)getLayoutInflater().inflate(R.layout.fragment_result, null);
 
         // Places Temperature in result.
-        TextView textView_temp = (TextView) header.findViewById(R.id.textView_temp);
+        TextView textView_temp = (TextView) findViewById(R.id.textView_temp);
         textView_temp.setText(tempC.toString() + " " + DEGREE + "C" + " / " + tempF.toString() + " " + DEGREE + "F");
 
         // Places city name in result.
-        TextView textView_cityName = (TextView) header.findViewById(R.id.textView_cityName);
-        textView_cityName.setText(intent.getStringExtra("CityName"));
+        TextView textView_cityName = (TextView) findViewById(R.id.textView_cityName);
+        textView_cityName.setText(data.getCityName());
 
         //Places Icon name in the result.
-        ImageView imageView = (ImageView) header.findViewById(R.id.imageView_img);
-        new DownloadImageTask(imageView).execute(intent.getStringExtra("ImageURL"));
+        ImageView imageView = (ImageView) findViewById(R.id.imageView_img);
+        new DownloadImageTask(imageView).execute(data.getImageURL());
 
         // Places Weather Details in result.
-        TextView textView_weather = (TextView) header.findViewById(R.id.textView_Weather);
-        textView_weather.setText(intent.getStringExtra("Weather"));
+        TextView textView_weather = (TextView) findViewById(R.id.textView_Weather);
+        textView_weather.setText(data.getWeather());
 
-        setContentView(header);
+        //setContentView(R.layout.fragment_result);
 
     }
 

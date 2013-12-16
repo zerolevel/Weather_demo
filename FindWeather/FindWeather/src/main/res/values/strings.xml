@@ -7,5 +7,6 @@
     <string name="buttonName_activity_main">Go!</string>
     <string name="hint_main_activity">Jaipur</string>
     <string name="title_activity_result">Result</string>
+    <string name="title_activity_option">Option</string>
 
 </resources>
